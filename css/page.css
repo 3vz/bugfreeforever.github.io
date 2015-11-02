@@ -14,6 +14,8 @@
 .link a {
 	text-shadow:0 0 1px;
 	letter-spacing:2px;
+	color:#3e3e3e;
+	text-decoration: none;
 	transition:padding-left 0.25s;
 	-webkit-transition:padding-left 0.25s;
 	-moz-transition:padding-left 0.25s;
