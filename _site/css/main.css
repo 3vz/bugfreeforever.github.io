@@ -271,7 +271,8 @@ li {
   list-style: none; }
 
 .well ul a {
-  text-decoration: underline; }
+  text-decoration: none;
+  color:#0099CC; }
 
 .well ul a:hover {
   color: #000; }
