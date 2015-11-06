@@ -132,7 +132,7 @@ li {
 }
 
 .post-list li a {
-	color: #000;	
+	color: #425066;	
 }
 
 #line {
@@ -144,22 +144,23 @@ li {
  * Artist
  */
 .well {
-	color: #000;
-	font-family: Monaco,"Courier New",monospace;
+	color: #50616D;
+	font-family: sans-serif,"Courier New",monospace;
 }
 
 .well ul {
-	color: #AAA;
+	color: #425066;
 	font-size: 14px;
 	list-style:none;
+    font-weight:bold;
 }
 
 .well ul a {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .well ul a:hover {
-	color: #000;
+	color: #75878A;
 }
 
 /**

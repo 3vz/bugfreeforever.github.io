@@ -24,6 +24,7 @@
 .link a:hover {
 	color:#00D809;
 	padding-left:15px;
+	text-decoration: none;
 }
 .timing {
 	position:relative;
