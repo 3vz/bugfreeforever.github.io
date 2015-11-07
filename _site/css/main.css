@@ -65,10 +65,10 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: #7397AB;
+  color: #75878A;
   text-decoration: none; }
   a:visited {
-    color: #4f7083; }
+    color: #525f61; }
   a:hover {
     color: #50616D; }
 
@@ -269,13 +269,13 @@ li {
   color: #425066;
   font-size: 14px;
   list-style: none;
-  font-weight: bold; }
+  font-weight: 500; }
 
 .well ul a {
   text-decoration: none; }
 
 .well ul a:hover {
-  color: #75878A; }
+  color: #7397AB; }
 
 /**
  * Category

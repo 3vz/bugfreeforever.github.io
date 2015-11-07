@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bug Free Forever</title>
+    <title>Your awesome title</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 06 Nov 2015 17:30:18 -0500</pubDate>
-    <lastBuildDate>Fri, 06 Nov 2015 17:30:18 -0500</lastBuildDate>
+    <pubDate>Sat, 07 Nov 2015 10:08:27 -0500</pubDate>
+    <lastBuildDate>Sat, 07 Nov 2015 10:08:27 -0500</lastBuildDate>
     <generator>Jekyll v3.0.0</generator>
     
       <item>
@@ -17,15 +17,11 @@
 &lt;p&gt;The main programming language will be Java, and Code Style will be Google Java Style.&lt;/p&gt;
 </description>
         <pubDate>Thu, 05 Nov 2015 06:34:43 -0500</pubDate>
-        <link>http://yourdomain.com/update/dsa/devops/2015/11/05/welcome-to-jekyll-copy.html</link>
-        <guid isPermaLink="true">http://yourdomain.com/update/dsa/devops/2015/11/05/welcome-to-jekyll-copy.html</guid>
+        <link>http://yourdomain.com/update/2015/11/05/welcome-to-jekyll-copy.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/update/2015/11/05/welcome-to-jekyll-copy.html</guid>
         
         
-        <category>update</category>
-        
-        <category>DSA</category>
-        
-        <category>DevOps</category>
+        <category>Update</category>
         
       </item>
     
