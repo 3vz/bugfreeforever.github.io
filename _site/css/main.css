@@ -12,7 +12,7 @@ dl, dd, ol, ul, figure {
  */
 body {
   font-family: "Raleway", Arial, sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.5;
   font-weight: 300;
   color: #50616D;
@@ -42,7 +42,7 @@ figure > img {
   display: block; }
 
 figcaption {
-  font-size: 14px; }
+  font-size: 12.25px; }
 
 /**
  * Lists
@@ -65,10 +65,10 @@ h1, h2, h3, h4, h5, h6 {
  * Links
  */
 a {
-  color: #75878A;
+  color: #525f61;
   text-decoration: none; }
   a:visited {
-    color: #525f61; }
+    color: #515865; }
   a:hover {
     color: #50616D; }
 
@@ -266,7 +266,7 @@ li {
   font-family: sans-serif,"Courier New",monospace; }
 
 .well ul {
-  color: #425066;
+  color: #75878A;
   font-size: 14px;
   list-style: none;
   font-weight: 500; }
