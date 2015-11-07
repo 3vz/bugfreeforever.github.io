@@ -1,14 +1,9 @@
-# Jekyll-Pithy
+# Bug Free Forever - Tech Blog
 
-Jekyll-Pithy is a theme for Jekyll. Here is [my blog](http://wenva.github.io) which use this theme.
+The site is powered by [github](https://github.io/) theme by [jekyll](http://jekyllrb.com/) first). Thank them for the great platform and awesome design.
 
-![image](https://raw.githubusercontent.com/smallmuou/Jekyll-Pithy/master/images/Jekyll-Pithy.png)
-
-### Usage
-* Clone it.
-* cd Jekyll-Pithy, and Run "jekyll serve"(You must install [jekyll](http://jekyllrb.com/) first)
-* Open web browser and enter "http://127.0.0.1:4000/", you can see the web page like snapshot above.
-* If you want to host you blog on Github Page, you can follow the steps provide by Github.
+All posts are public, you can repost them, but please note the source page.
+Thanks a lot!
 
 ### License
 The code follows MIT License.
