@@ -1,0 +1,65 @@
+---
+layout: post
+title:  Two Sum
+author: Zhen Zhao
+date:   2015-07-01 11:45:32 -05:00
+categories: Array
+---
+Given an array of integers, find two numbers such that they add up to a specific target number.
+
+The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.
+
+You may assume that each input would have exactly one solution.
+
+### Clarify :
+1. Does the array contain duplicate elements?
+2. Is it an ordered array?
+
+### Solution1 (no duplicates in Array) :.
+
+1. Build a HashMap witt elements.
+2. Check whether target (= sum - current element) exists in HashMap
+
+{% highlight java %}
+public class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        int[] result =new int[2];
+        for (int i = 0 ; i < numbers.length; i++) {
+            if (map.containsKey(numbers[i])) {
+                int index = map.get(numbers[i]);
+                result[0] = index + 1;
+                result[1] = i + 1;
+            }
+            else map.put(target - numbers[i], i);
+        }
+        return result;
+    }
+}
+{% endhighlight %}
+
+### Solution2 (ordered Array) :
+1. Have two indexs: head, tail.
+2. Check whether array[head] + array[tail] = target
+
+{% highlight java %}
+public class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int[] result = new int[2];
+        int head = 0;
+        int tail = 0;
+        while (head < tail){
+            if(numbers[head] + numbers[tail] < target)
+                head++;
+            else if(numbers[head] + numbers[tail] > target)
+                tail--;
+            else {
+                result[0] = head;
+                result[1] = tail;
+                break;
+            }
+        }
+        return result;
+  }
+}
+{% endhighlight %}
