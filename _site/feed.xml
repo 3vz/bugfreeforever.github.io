@@ -6,9 +6,32 @@
 </description>
     <link>http://yourdomain.com/</link>
     <atom:link href="http://yourdomain.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 08 Nov 2015 22:52:09 -0500</pubDate>
-    <lastBuildDate>Sun, 08 Nov 2015 22:52:09 -0500</lastBuildDate>
+    <pubDate>Sun, 08 Nov 2015 22:53:02 -0500</pubDate>
+    <lastBuildDate>Sun, 08 Nov 2015 22:53:02 -0500</lastBuildDate>
     <generator>Jekyll v3.0.0</generator>
+    
+      <item>
+        <title>Jekyll Server Error</title>
+        <description>&lt;p&gt;Try to restart Jekyll Server after get  a conversion error
+Show the following error:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-console&quot; data-lang=&quot;console&quot;&gt;Jekyll 3.0.0 | Error:  Address already in use - bind(2)&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;solution&quot;&gt;Solution:&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code&gt;sudo lsof -i :4000&lt;/code&gt; check PID of server port&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;kill -9 + PID&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;start Jekyll Server&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Sun, 08 Nov 2015 22:32:43 -0500</pubDate>
+        <link>http://yourdomain.com/server/2015/11/08/jekyll-server-error.html</link>
+        <guid isPermaLink="true">http://yourdomain.com/server/2015/11/08/jekyll-server-error.html</guid>
+        
+        
+        <category>Server</category>
+        
+      </item>
     
       <item>
         <title>Bug Free Forever</title>

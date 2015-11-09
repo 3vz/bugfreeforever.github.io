@@ -5,12 +5,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width initial-scale=1">
 
-  <title>Bug Free Forever</title>
+  <title>Jekyll Server Error</title>
   <link href="/images/favicon.ico" rel="shortcut icon">
-  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-">
+  <meta name="description" content="Try to restart Jekyll Server after get  a conversion errorShow the following error:Jekyll 3.0.0 | Error:  Address already in use - bind(2)">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://yourdomain.com/category.html">
+  <link rel="canonical" href="http://yourdomain.com/server/2015/11/08/jekyll-server-error.html">
   <link rel="alternate" type="application/atom+xml" title="Bug Free Forever" href="http://yourdomain.com/feed.xml" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/scripts/pithy.js"></script>
@@ -32,11 +31,9 @@
 				</li>			
 			
 			
-			<span class="title">
 				<li>
 					<a href="/category.html">category</a>
-				</li>
-			</span>			
+				</li>			
 			
 		</div>		
 	</div>
@@ -45,35 +42,26 @@
     <br>
     <div class="page-content">
       <div class="wrapper">
-        <div class="well">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h2 class="post-title">Jekyll Server Error</h2>
+    <p class="post-meta">Nov 8, 2015 22:32 • Zhen Zhao</p>
+  </header>
+  <article class="post-content">
+    <p>Try to restart Jekyll Server after get  a conversion error
+Show the following error:</p>
 
+<figure class="highlight"><pre><code class="language-console" data-lang="console">Jekyll 3.0.0 | Error:  Address already in use - bind(2)</code></pre></figure>
 
+<h3 id="solution">Solution:</h3>
+<ol>
+  <li><code>sudo lsof -i :4000</code> check PID of server port</li>
+  <li><code>kill -9 + PID</code></li>
+  <li>start Jekyll Server</li>
+</ol>
 
-
-<h3 class="category" id="Array">Array</h3>
-<ul>
-
-<li><span>Jul 01 15</span> » <a href="/array/2015/07/01/two-sum.html">Two Sum</a></li>
-
-</ul>
-
-
-<h3 class="category" id="Server">Server</h3>
-<ul>
-
-<li><span>Nov 08 15</span> » <a href="/server/2015/11/08/jekyll-server-error.html">Jekyll Server Error</a></li>
-
-</ul>
-
-
-<h3 class="category" id="Update">Update</h3>
-<ul>
-
-<li><span>Nov 05 15</span> » <a href="/update/2015/11/05/bug-free-forever-copy.html">Bug Free Forever</a></li>
-
-</ul>
-
-<br/><br/>
+  </article>
 </div>
 
       </div>
