@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Add Two Numbers</title>
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <meta name="description" content="You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. ...">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/linkedlist/2015/07/01/add-two-numbers.html">
+  <link rel="alternate" type="application/atom+xml" title="Bug Free Forever" href="http://yourdomain.com/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html"><img src="/images/logo.png"></a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+		</div>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h2 class="post-title">Add Two Numbers</h2>
+    <p class="post-meta">Jul 1, 2015 12:45 • Zhen Zhao</p>
+  </header>
+  <article class="post-content">
+    <p>You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.</p>
+
+<p><strong>Input:</strong> (2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)</p>
+
+<p><strong>Output:</strong> 7 -&gt; 0 -&gt; 8</p>
+
+<h3 id="clarify">Clarify:</h3>
+<ol>
+  <li>Store result in which LinkedList or create a new one?</li>
+</ol>
+
+<h3 id="solution">Solution:</h3>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="cm">/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">ListNode</span> <span class="n">addTwoNumbers</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">l1</span><span class="o">,</span> <span class="n">ListNode</span> <span class="n">l2</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">l1</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">l2</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">l1</span> <span class="o">==</span> <span class="kc">null</span><span class="o">?</span> <span class="nl">l2:</span> <span class="n">l1</span><span class="o">;</span>
+        <span class="n">ListNode</span> <span class="n">newHead</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="n">newHead</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">l1</span><span class="o">;</span>
+        <span class="n">ListNode</span> <span class="n">pre</span> <span class="o">=</span> <span class="n">newHead</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">carry</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">l1</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">l2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="na">val</span> <span class="o">+</span> <span class="n">l2</span><span class="o">.</span><span class="na">val</span> <span class="o">+</span> <span class="n">carry</span><span class="o">;</span>
+            <span class="n">l1</span><span class="o">.</span><span class="na">val</span> <span class="o">=</span> <span class="n">temp</span><span class="o">%</span><span class="mi">10</span><span class="o">;</span>
+            <span class="n">carry</span> <span class="o">=</span> <span class="n">temp</span><span class="o">/</span><span class="mi">10</span><span class="o">;</span>
+            <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">pre</span> <span class="o">=</span> <span class="n">pre</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">l2</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">pre</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">l2</span><span class="o">;</span>
+            <span class="n">l1</span> <span class="o">=</span> <span class="n">pre</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">while</span><span class="o">(</span><span class="n">l1</span><span class="o">!=</span> <span class="kc">null</span> <span class="o">){</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">carry</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="na">val</span> <span class="o">+</span> <span class="n">carry</span><span class="o">;</span>
+                <span class="n">l1</span><span class="o">.</span><span class="na">val</span> <span class="o">=</span> <span class="n">temp</span><span class="o">%</span><span class="mi">10</span><span class="o">;</span>
+                <span class="n">carry</span> <span class="o">=</span> <span class="n">temp</span><span class="o">/</span><span class="mi">10</span><span class="o">;</span>
+                <span class="n">pre</span> <span class="o">=</span> <span class="n">pre</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">else</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="c1">// do not forget when both are null, carry = 1.</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">carry</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="n">pre</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">newHead</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+  </article>
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div><br>
+	Powered by Jekyll | <a href="https://github.com/bugfreeforever" title="Github"><img width="19px" height="19px" src="/images/github.png"/></a>
+</footer>
+
+    
+  </body>
+
+</html>
