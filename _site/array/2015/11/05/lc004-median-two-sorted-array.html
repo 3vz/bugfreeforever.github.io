@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Median of Two Sorted Arrays</title>
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <meta name="description" content="There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be...">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/array/2015/11/05/lc004-median-two-sorted-array.html">
+  <link rel="alternate" type="application/atom+xml" title="Bug Free Forever" href="http://yourdomain.com/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html"><img src="/images/logo.png"></a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+		</div>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h2 class="post-title">Median of Two Sorted Arrays</h2>
+    <p class="post-meta">Nov 5, 2015 23:34 • Zhen Zhao</p>
+  </header>
+  <article class="post-content">
+    <p>There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).</p>
+
+<h3 id="clarify">Clarify:</h3>
+
+<h3 id="solution">Solution:</h3>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">double</span> <span class="n">findMedianSortedArrays</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">A</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">B</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">((</span><span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">+</span><span class="n">B</span><span class="o">.</span><span class="na">length</span><span class="o">)%</span><span class="mi">2</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span>
+            <span class="c1">//odd count elements, reuturn the median one.</span>
+            <span class="k">return</span> <span class="n">helper</span><span class="o">(</span><span class="n">A</span><span class="o">,</span><span class="n">B</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">B</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">,(</span><span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">+</span><span class="n">B</span><span class="o">.</span><span class="na">length</span><span class="o">)/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>
+        <span class="k">else</span>
+            <span class="c1">//even count elements, return the average of two elements in middle.</span>
+            <span class="k">return</span> <span class="o">(</span><span class="n">helper</span><span class="o">(</span><span class="n">A</span><span class="o">,</span><span class="n">B</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">B</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">,(</span><span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">+</span><span class="n">B</span><span class="o">.</span><span class="na">length</span><span class="o">)/</span><span class="mi">2</span><span class="o">)</span>
+                <span class="o">+</span> <span class="n">helper</span><span class="o">(</span><span class="n">A</span><span class="o">,</span><span class="n">B</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">B</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">,(</span><span class="n">A</span><span class="o">.</span><span class="na">length</span><span class="o">+</span><span class="n">B</span><span class="o">.</span><span class="na">length</span><span class="o">)/</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="o">))/</span><span class="mf">2.0</span><span class="o">;</span>
+    <span class="o">}</span>
+  <span class="cm">/**
+   * The function it to find the kth element of two arrays.
+   * @param A
+   * @param B
+   * @param i  A's start index
+   * @param i2 A's end index
+   * @param j  B's start index
+   * @param j2 B's end index
+   * @param k  the kth element
+   * @return
+   */</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">helper</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">A</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">B</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">j</span><span class="o">,</span> <span class="kt">int</span> <span class="n">j2</span><span class="o">,</span> <span class="kt">int</span> <span class="n">k</span><span class="o">){</span>
+        <span class="c1">//length of array A's search range.</span>
+        <span class="kt">int</span> <span class="n">m</span> <span class="o">=</span> <span class="n">i2</span><span class="o">-</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+        <span class="c1">//length of array B's search range.</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="n">j2</span><span class="o">-</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">;</span>
+        <span class="c1">//Switch place when A has more elements than B.</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">m</span><span class="o">&gt;</span><span class="n">n</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">helper</span><span class="o">(</span><span class="n">B</span><span class="o">,</span><span class="n">A</span><span class="o">,</span><span class="n">j</span><span class="o">,</span><span class="n">j2</span><span class="o">,</span><span class="n">i</span><span class="o">,</span><span class="n">i2</span><span class="o">,</span><span class="n">k</span><span class="o">);</span>
+        <span class="c1">//A's search range already be 0, return median of B's search range</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">m</span><span class="o">==</span><span class="mi">0</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">B</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+        <span class="c1">//Find the first element of two arrays.</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">k</span><span class="o">==</span><span class="mi">1</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">A</span><span class="o">[</span><span class="n">i</span><span class="o">],</span><span class="n">B</span><span class="o">[</span><span class="n">j</span><span class="o">]);</span>
+        <span class="cm">/*How many elements in array A.
+          if posA == m, means k/2 is greater than the search range of A.
+          But we still cannot make sure whether the result in A or not.
+        */</span>
+        <span class="kt">int</span> <span class="n">posA</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">min</span><span class="o">(</span><span class="n">k</span><span class="o">/</span><span class="mi">2</span><span class="o">,</span><span class="n">m</span><span class="o">);</span>
+        <span class="c1">//How many elements in array B.</span>
+        <span class="kt">int</span> <span class="n">posB</span> <span class="o">=</span> <span class="n">k</span><span class="o">-</span><span class="n">posA</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">A</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="n">posA</span><span class="o">-</span><span class="mi">1</span><span class="o">]==</span><span class="n">B</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="n">posB</span><span class="o">-</span><span class="mi">1</span><span class="o">])</span>
+            <span class="k">return</span> <span class="n">A</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="n">posA</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+        <span class="c1">//situation 1</span>
+        <span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">A</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="n">posA</span><span class="o">-</span><span class="mi">1</span><span class="o">]&lt;</span><span class="n">B</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="n">posB</span><span class="o">-</span><span class="mi">1</span><span class="o">])</span>
+            <span class="c1">//A's start index update to i + posA -1, </span>
+            <span class="c1">//B's end index update to j + posB -1.</span>
+            <span class="k">return</span> <span class="n">helper</span><span class="o">(</span><span class="n">A</span><span class="o">,</span><span class="n">B</span><span class="o">,</span><span class="n">i</span><span class="o">+</span><span class="n">posA</span><span class="o">,</span><span class="n">i2</span><span class="o">,</span><span class="n">j</span><span class="o">,</span><span class="n">j</span><span class="o">+</span><span class="n">posB</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span><span class="n">k</span><span class="o">-</span><span class="n">posA</span><span class="o">);</span>
+        <span class="c1">//situation 2 &amp; 3</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="n">helper</span><span class="o">(</span><span class="n">A</span><span class="o">,</span><span class="n">B</span><span class="o">,</span><span class="n">i</span><span class="o">,</span><span class="n">i</span><span class="o">+</span><span class="n">posA</span><span class="o">-</span><span class="mi">1</span><span class="o">,</span><span class="n">j</span><span class="o">+</span><span class="n">posB</span><span class="o">,</span><span class="n">j2</span><span class="o">,</span><span class="n">k</span><span class="o">-</span><span class="n">posB</span><span class="o">);</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+<span class="n">The</span> <span class="n">number</span> <span class="n">above</span> <span class="err">$</span> <span class="n">sign</span> <span class="n">is</span> <span class="n">the</span> <span class="n">posA</span> <span class="n">and</span> <span class="n">posB</span> <span class="n">index</span><span class="o">,</span> 
+<span class="n">also</span> <span class="n">the</span> <span class="n">element</span> <span class="n">be</span> <span class="n">compared</span><span class="o">.</span>
+
+<span class="mi">1</span><span class="o">.</span> <span class="n">situation</span> <span class="mi">1</span><span class="o">:</span>
+	 <span class="nl">A:</span> <span class="mi">3</span>  <span class="mi">5</span>  <span class="mi">7</span>  <span class="mi">9</span>  <span class="mi">11</span>
+	          <span class="err">$</span><span class="o">-------</span>
+   <span class="nl">B:</span>           <span class="mi">8</span>   <span class="mi">10</span>  <span class="mi">12</span>  <span class="mi">14</span>  <span class="mi">16</span>  <span class="mi">18</span>
+                <span class="o">---------</span><span class="err">$</span>
+   
+
+<span class="mi">2</span><span class="o">.</span> <span class="n">situation</span> <span class="mi">2</span><span class="o">:</span>
+   <span class="nl">A:</span>            <span class="mi">8</span>  <span class="mi">10</span>  <span class="mi">12</span>  <span class="mi">14</span>  <span class="mi">15</span> 
+                 <span class="o">--------</span><span class="err">$</span>
+   <span class="nl">B:</span> <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>   <span class="mi">9</span>  <span class="mi">11</span> 
+               <span class="err">$</span><span class="o">--------</span>
+
+<span class="mi">3</span><span class="o">.</span> <span class="n">situation</span> <span class="mi">3</span><span class="o">:</span>
+   <span class="nl">A:</span>            <span class="mi">8</span>  <span class="mi">10</span>  
+                 <span class="o">----</span><span class="err">$</span>
+   <span class="nl">B:</span> <span class="mi">1</span>  <span class="mi">2</span>  <span class="mi">3</span>  <span class="mi">4</span>   <span class="mi">9</span>  <span class="mi">11</span>  <span class="mi">12</span>  <span class="mi">14</span>  <span class="mi">15</span> 
+               <span class="err">$</span><span class="o">------------</span>
+    </code></pre></figure>
+
+
+  </article>
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div><br>
+	Powered by Jekyll | <a href="https://github.com/bugfreeforever" title="Github"><img width="19px" height="19px" src="/images/github.png"/></a>
+</footer>
+
+    
+  </body>
+
+</html>
