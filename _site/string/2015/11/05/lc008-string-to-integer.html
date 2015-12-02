@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>String to Integer</title>
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <meta name="description" content="Implement atoi to convert a string to an integer.">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/string/2015/11/05/lc008-string-to-integer.html">
+  <link rel="alternate" type="application/atom+xml" title="Bug Free Forever" href="http://yourdomain.com/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html"><img src="/images/logo.png"></a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+		</div>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h2 class="post-title">String to Integer</h2>
+    <p class="post-meta">Nov 5, 2015 23:34 • Zhen Zhao</p>
+  </header>
+  <article class="post-content">
+    <p>Implement atoi to convert a string to an integer.</p>
+
+<p>Hint: Carefully consider all possible input cases. If you want a challenge, please do not see below and ask yourself what are the possible input cases.</p>
+
+<p>Notes: It is intended for this problem to be specified vaguely (ie, no given input specs). You are responsible to gather all the input requirements up front.</p>
+
+<p>Update (2015-02-10):
+The signature of the C++ function had been updated. If you still see your function signature accepts a const char * argument, please click the reload button  to reset your code definition.</p>
+
+<h3 id="clarify">Clarify:</h3>
+<ol>
+  <li>mulspace, special characters, sign bit,</li>
+  <li>overflow</li>
+</ol>
+
+<h3 id="solution">Solution:</h3>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="n">myAtoi</span><span class="o">(</span><span class="n">String</span> <span class="n">str</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">str</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">res</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="kt">boolean</span> <span class="n">signed</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">str</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">' '</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// "-1 23" is illegal.</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">signed</span> <span class="o">||</span> <span class="n">res</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span>
+                    <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+                <span class="k">else</span>
+                    <span class="k">continue</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'-'</span> <span class="o">||</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'+'</span><span class="o">)</span> <span class="o">{</span>
+                <span class="c1">// "+-123" is illegal.</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">signed</span><span class="o">)</span>
+                    <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="n">sign</span> <span class="o">=</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'-'</span><span class="o">?</span> <span class="o">-</span><span class="mi">1</span><span class="o">:</span> <span class="mi">1</span><span class="o">;</span>
+                    <span class="n">signed</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                    <span class="k">continue</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&gt;=</span> <span class="sc">'0'</span> <span class="o">&amp;&amp;</span> <span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;=</span> <span class="sc">'9'</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">tail</span>  <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">str</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">i</span><span class="o">)));</span>
+                <span class="c1">// attention: MAX_VALUE = 2147483647, MIN_VALUE = -2147483648.</span>
+                <span class="c1">// "2147483648" will return MAX_VALUE</span>
+                <span class="c1">// attention "-2147483648" will be ok.</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">sign</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">sign</span> <span class="o">*</span> <span class="n">Math</span><span class="o">.</span><span class="na">abs</span><span class="o">(</span><span class="n">res</span><span class="o">)*</span><span class="mi">10</span> <span class="o">-</span> <span class="n">tail</span><span class="o">;</span>
+                    <span class="k">if</span> <span class="o">((</span><span class="n">temp</span> <span class="o">+</span> <span class="n">tail</span><span class="o">)/</span><span class="mi">10</span> <span class="o">!=</span> <span class="n">res</span> <span class="o">||</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">sign</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                        <span class="k">return</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span>
+                    <span class="o">}</span>
+                    <span class="k">else</span>
+                        <span class="n">res</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="k">else</span> <span class="o">{</span>
+                    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">tail</span><span class="o">;</span>
+                    <span class="c1">// in java , when overflow, it will be min_value,</span>
+                    <span class="c1">// when it take away the tail, it will be max_value.</span>
+                    <span class="c1">// (temp - tail)/10 != res is for overflow situation.</span>
+                    <span class="k">if</span> <span class="o">((</span><span class="n">temp</span> <span class="o">-</span> <span class="n">tail</span><span class="o">)/</span><span class="mi">10</span> <span class="o">!=</span> <span class="n">res</span> <span class="o">||</span> <span class="n">temp</span> <span class="o">*</span> <span class="n">sign</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">)</span> <span class="o">{</span>
+                        <span class="k">return</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
+                    <span class="o">}</span>
+                    <span class="k">else</span>
+                        <span class="n">res</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="c1">// "-12a23" should return -12.</span>
+            <span class="k">else</span>
+                <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="n">test</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//System.out.println(myAtoi("-12 2"));</span>
+        <span class="c1">//System.out.println(myAtoi("+-12"));</span>
+        <span class="c1">//System.out.println(myAtoi("112a2"));</span>
+        <span class="c1">//System.out.println(myAtoi("2147483648"));</span>
+        <span class="c1">//System.out.println(myAtoi("-2147483649"));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myAtoi</span><span class="o">(</span><span class="s">"   10522545459"</span><span class="o">));</span>
+
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+  </article>
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div><br>
+	Powered by Jekyll | <a href="https://github.com/bugfreeforever" title="Github"><img width="19px" height="19px" src="/images/github.png"/></a>
+</footer>
+
+    
+  </body>
+
+</html>

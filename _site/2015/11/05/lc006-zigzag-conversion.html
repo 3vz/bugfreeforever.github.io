@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Lc006 Zigzag Conversion</title>
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <meta name="description" content="The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this:">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://yourdomain.com/2015/11/05/lc006-zigzag-conversion.html">
+  <link rel="alternate" type="application/atom+xml" title="Bug Free Forever" href="http://yourdomain.com/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html"><img src="/images/logo.png"></a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+		</div>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h2 class="post-title">Lc006 Zigzag Conversion</h2>
+    <p class="post-meta">Nov 5, 2015 23:34 • Zhen Zhao</p>
+  </header>
+  <article class="post-content">
+    <p>The string “PAYPALISHIRING” is written in a zigzag pattern on a given number of rows like this:</p>
+
+<p>P~~~A~~~H~~~N</p>
+
+<p>A~P~L~S~I~I~G</p>
+
+<p>Y~~~I~~~R</p>
+
+<p>And then read line by line: “PAHNAPLSIIGYIR”.</p>
+
+<h3 id="clarify">Clarify:</h3>
+
+<h3 id="solution">Solution:</h3>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">LC006_ZigZagConversion</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="n">convert</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numRows</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">s</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">numRows</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="o">)</span>
+            <span class="k">return</span> <span class="s">""</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">numRows</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">s</span><span class="o">;</span>
+        <span class="n">StringBuilder</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+        <span class="kt">int</span> <span class="n">zig</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">numRows</span> <span class="o">-</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numRows</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">();</span> <span class="n">j</span> <span class="o">+=</span> <span class="n">zig</span><span class="o">){</span>
+                <span class="n">res</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">j</span><span class="o">));</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">numRows</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">j</span> <span class="o">+</span> <span class="n">zig</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()){</span>
+                    <span class="c1">// j + zig - 2 * i : j + zig stands for the next pattern's same position, </span>
+                    <span class="c1">// 2 * i means we need ga back  2 * i positions.</span>
+                    <span class="c1">//  input: 1,2,3,4,5,6,7,8,9,10,11,12,13</span>
+                    <span class="c1">//</span>
+                    <span class="c1">//  1           7           13</span>
+                    <span class="c1">//  2       6   8       12</span>
+                    <span class="c1">//  3   5       9   11</span>
+                    <span class="c1">//  4           10</span>
+                    <span class="c1">//</span>
+                    <span class="c1">//  zig = 6, 2 -&gt; 8,  between them, there shoud be a 6, </span>
+                    <span class="c1">// so we need go back 2 * i positions.res.append(s.charAt(j + zig - 2 * i));</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">res</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+  </article>
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div><br>
+	Powered by Jekyll | <a href="https://github.com/bugfreeforever" title="Github"><img width="19px" height="19px" src="/images/github.png"/></a>
+</footer>
+
+    
+  </body>
+
+</html>
