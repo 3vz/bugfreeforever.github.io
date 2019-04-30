@@ -14,3 +14,5 @@ timezone: America/New_York
 # Build settings
 markdown: kramdown
 
+
+theme: jekyll-theme-architect
